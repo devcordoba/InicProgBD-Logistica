@@ -1,7 +1,5 @@
-<<<<<<< HEAD
 # InicProgBD-Logistica
 
-=======
 # 🚚 LogistiCom - Sistema de Gestión de Comisiones
 
 ---
