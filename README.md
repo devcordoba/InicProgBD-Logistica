@@ -16,16 +16,24 @@ El objetivo principal del sistema es permitir la visualización clara y organiza
 
 El sistema busca facilitar la administración diaria, la trazabilidad de envíos y el control financiero básico de la empresa.
 
-## 🧭 Posibles Funcionalidades o Áreas de Enfoque Inicial
+## 🧭 ✔️ Funcionalidades agregadas / ❌ Funcionalidades planeadas o que están en progreso
 
 ✔️​​ Registro y Login con autenticación de usuarios
-❌ Dashboard con indicadores clave
+
+✔️ Gestión de Usuarios
+
 ✔️ Gestión de Comisiones o pedidos
+
 ❌ Gestión de Viajes
-❌ Gestión de Usuarios
+
+❌ Dashboard con indicadores clave
+
 ❌ Gestión de Vehículos y Mantenimiento
+
 ❌ Visualización de Carteras (ingresos y egresos)
+
 ❌ Notificaciones internas
+
 ❌ Adaptado como Web App (uso optimizado desde dispositivos móviles)
 
 ## 👥 Posibles Usuarios
@@ -35,10 +43,10 @@ El sistema busca facilitar la administración diaria, la trazabilidad de envíos
   
 ## 👥 Integrantes del Equipo
 - Lanfranco Darel Caballero | Programador
-- Tomás Agustín Huespe
+- Tomás Agustín Huespe | Soporte
 - Milton René Argüello | Enfocado en Backend, principalmente .NET, y conocimientos en HTML, CSS y React. |
 - Gonzalo Nicolás Quiroga | Enfocado en frontend y experiencia en HTML, CSS y React. |
-- Ángel Nicolás Rivero
+- Ángel Nicolás Rivero | Soporte / Auxiliar técnico
 
 ## 🚀 Estado del Proyecto
 
