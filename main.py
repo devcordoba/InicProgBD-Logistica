@@ -11,7 +11,7 @@ if len(Usuario._usuarios) == 0:
 def main():
     while True:
         login = Login()
-        print("\n=== Sistema de gestión de pedidos (Logística ABC) ===")
+        print("\n=== Sistema de gestión de pedidos (LogistiCom) ===")
         print("\n=== Iniciar sesión ===\n")
         email = input("Email: ").strip()
         password = input("Contraseña: ").strip()
