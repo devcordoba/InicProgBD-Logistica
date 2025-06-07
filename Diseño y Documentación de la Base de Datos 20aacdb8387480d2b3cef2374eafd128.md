@@ -11,7 +11,7 @@ Tras analizar el sistema, se identifican las siguientes entidades clave:
 
 ## Atributos de Cada Entidad
 
-### *Usuario*
+### *Usuarios*
 
 - `id_usuario`: Identificador único.
 - `nombre`: Nombre completo del usuario.
@@ -19,12 +19,12 @@ Tras analizar el sistema, se identifican las siguientes entidades clave:
 - `contrasena`: Hash de la contraseña (SHA-256).
 - `id_rol`: Referencia al rol asignado.
 
-### *Rol*
+### *Roles*
 
 - `id_rol`: Clave primaria.
 - `nombre`: Nombre del rol (ej. `admin`, `usuario`).
 
-### *Pedido*
+### *Pedidos*
 
 - `id_pedido`: Identificador del pedido.
 - `id_usuario`: Usuario que realiza el pedido.
@@ -32,7 +32,7 @@ Tras analizar el sistema, se identifican las siguientes entidades clave:
 - `estado`: Estado actual (`Pendiente`, `Despachado`).
 - `descripcion`: Detalles del pedido.
 
-### *Movimiento*
+### *Movimientos*
 
 - `id_movimiento`: Identificador del evento.
 - `id_pedido`: Pedido relacionado.
@@ -60,37 +60,35 @@ El modelo fue normalizado hasta **Tercera Forma Normal (3FN)** para evitar redun
 ## Modelo Relacional
 
 ```sql
-sql
-CopyEdit
-CREATE TABLE Rol (
+CREATE TABLE Roles (
     id_rol INT PRIMARY KEY AUTO_INCREMENT,
     nombre VARCHAR(50) UNIQUE NOT NULL
 );
 
-CREATE TABLE Usuario (
+CREATE TABLE Usuarios (
     id_usuario INT PRIMARY KEY AUTO_INCREMENT,
     nombre VARCHAR(100) NOT NULL,
     email VARCHAR(100) UNIQUE NOT NULL,
     contrasena CHAR(64) NOT NULL,
     id_rol INT NOT NULL,
-    FOREIGN KEY (id_rol) REFERENCES Rol(id_rol)
+    FOREIGN KEY (id_rol) REFERENCES Roles(id_rol)
 );
 
-CREATE TABLE Pedido (
+CREATE TABLE Pedidos (
     id_pedido INT PRIMARY KEY AUTO_INCREMENT,
     id_usuario INT NOT NULL,
     fecha TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     estado ENUM('Pendiente', 'Despachado') DEFAULT 'Pendiente',
     descripcion TEXT,
-    FOREIGN KEY (id_usuario) REFERENCES Usuario(id_usuario)
+    FOREIGN KEY (id_usuario) REFERENCES Usuarios(id_usuario)
 );
 
-CREATE TABLE Movimiento (
+CREATE TABLE Movimientos (
     id_movimiento INT PRIMARY KEY AUTO_INCREMENT,
     id_pedido INT NOT NULL,
     tipo ENUM('Ingreso', 'Despacho') NOT NULL,
     fecha TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    FOREIGN KEY (id_pedido) REFERENCES Pedido(id_pedido)
+    FOREIGN KEY (id_pedido) REFERENCES Pedidos(id_pedido)
 );
 ```
 
@@ -110,9 +108,7 @@ CREATE TABLE Movimiento (
 ### *Crear*
 
 ```sql
-sql
-CopyEdit
-INSERT INTO Usuario (nombre, email, contrasena, id_rol)
+INSERT INTO Usuarios (nombre, email, contrasena, id_rol)
 VALUES ('Lucía Ramos', 'lucia@example.com', SHA2('clave123', 256), 2);
 
 ```
@@ -120,19 +116,15 @@ VALUES ('Lucía Ramos', 'lucia@example.com', SHA2('clave123', 256), 2);
 ### *Leer*
 
 ```sql
-sql
-CopyEdit
 SELECT u.id_usuario, u.nombre, u.email, r.nombre AS rol
-FROM Usuario u
-JOIN Rol r ON u.id_rol = r.id_rol;
+FROM Usuarios u
+JOIN Roles r ON u.id_rol = r.id_rol;
 ```
 
 ### *Actualizar Nombre*
 
 ```sql
-sql
-CopyEdit
-UPDATE Usuario
+UPDATE Usuarios
 SET nombre = 'Lucía R.'
 WHERE id_usuario = 1;
 ```
@@ -140,9 +132,7 @@ WHERE id_usuario = 1;
 ### *Cambiar Contraseña*
 
 ```sql
-sql
-CopyEdit
-UPDATE Usuario
+UPDATE Usuarios
 SET contrasena = SHA2('nuevaclave', 256)
 WHERE id_usuario = 1;
 ```
@@ -150,9 +140,7 @@ WHERE id_usuario = 1;
 ### *Cambiar Rol*
 
 ```sql
-sql
-CopyEdit
-UPDATE Usuario
+UPDATE Usuarios
 SET id_rol = 1
 WHERE id_usuario = 1;
 ```
@@ -160,26 +148,22 @@ WHERE id_usuario = 1;
 ### *Eliminar*
 
 ```sql
-sql
-CopyEdit
-DELETE FROM Usuario
+DELETE FROM Usuarios
 WHERE id_usuario = 1;
 ```
 
 ## Script Completo – Creación de Base de Datos
 
 ```sql
-sql
-CopyEdit
 CREATE DATABASE IF NOT EXISTS sistema_pedidos;
 USE sistema_pedidos;
 
-CREATE TABLE Rol (
+CREATE TABLE Roles (
     id_rol INT PRIMARY KEY AUTO_INCREMENT,
     nombre VARCHAR(50) UNIQUE NOT NULL
 );
 
-CREATE TABLE Usuario (
+CREATE TABLE Usuarios (
     id_usuario INT PRIMARY KEY AUTO_INCREMENT,
     nombre VARCHAR(100) NOT NULL,
     email VARCHAR(100) UNIQUE NOT NULL,
@@ -188,7 +172,7 @@ CREATE TABLE Usuario (
     FOREIGN KEY (id_rol) REFERENCES Rol(id_rol)
 );
 
-CREATE TABLE Pedido (
+CREATE TABLE Pedidos (
     id_pedido INT PRIMARY KEY AUTO_INCREMENT,
     id_usuario INT NOT NULL,
     fecha TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
@@ -197,7 +181,7 @@ CREATE TABLE Pedido (
     FOREIGN KEY (id_usuario) REFERENCES Usuario(id_usuario)
 );
 
-CREATE TABLE Movimiento (
+CREATE TABLE Movimientos (
     id_movimiento INT PRIMARY KEY AUTO_INCREMENT,
     id_pedido INT NOT NULL,
     tipo ENUM('Ingreso', 'Despacho') NOT NULL,
@@ -206,13 +190,13 @@ CREATE TABLE Movimiento (
 );
 
 -- Carga inicial de roles
-INSERT INTO rol (nombre) VALUES ('admin'), ('usuario')
+INSERT INTO roles (nombre) VALUES ('admin'), ('usuario')
 ON DUPLICATE KEY UPDATE nombre = nombre;
 
 -- Carga inicial de usuarios
-INSERT INTO usuario (nombre, email, contrasena, id_rol)
+INSERT INTO usuarios (nombre, email, contrasena, id_rol)
 VALUES 
-  ('Admin', 'admin@abc.com', SHA2('admin123', 256), (SELECT id_rol FROM rol WHERE nombre = 'admin')),
-  ('Juan', 'juan@abc.com', SHA2('user123', 256), (SELECT id_rol FROM rol WHERE nombre = 'usuario'))
+  ('Admin', 'admin@abc.com', SHA2('admin123', 256), (SELECT id_rol FROM roles WHERE nombre = 'admin')),
+  ('Juan', 'juan@abc.com', SHA2('user123', 256), (SELECT id_rol FROM roles WHERE nombre = 'usuario'))
 ON DUPLICATE KEY UPDATE email = email;
 ```
