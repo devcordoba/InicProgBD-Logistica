@@ -1,6 +1,6 @@
-# 🚚 LogistiCom - Sistema de Gestión de Comisiones
+# InicProgBD-Logistica
 
----
+# 🚚 LogistiCom - Sistema de Gestión de Comisiones
 
 ## 💡 Breve Descripción de la Idea
 
@@ -16,45 +16,43 @@ El objetivo principal del sistema es permitir la visualización clara y organiza
 
 El sistema busca facilitar la administración diaria, la trazabilidad de envíos y el control financiero básico de la empresa.
 
----
+## 🧭 ✔️ Funcionalidades agregadas / ❌ Funcionalidades planeadas o que están en progreso
 
-## 🧭 Posibles Funcionalidades o Áreas de Enfoque Inicial
+✔️​​ Registro y Login con autenticación de usuarios
 
-- Registro y Login con autenticación de usuarios
-- Dashboard con indicadores clave
-- Gestión de Comisiones
-- Gestión de Viajes
-- Gestión de Choferes
-- Gestión de Clientes
-- Gestión de Vehículos y Mantenimiento
-- Visualización de Carteras (ingresos y egresos)
-- Notificaciones internas
-- Adaptado como Web App (uso optimizado desde dispositivos móviles)
+✔️ Gestión de Usuarios
 
-### 👥 Posibles Usuarios
+✔️ Gestión de Comisiones o pedidos
+
+❌ Gestión de Viajes
+
+❌ Dashboard con indicadores clave
+
+❌ Gestión de Vehículos y Mantenimiento
+
+❌ Visualización de Carteras (ingresos y egresos)
+
+❌ Notificaciones internas
+
+❌ Adaptado como Web App (uso optimizado desde dispositivos móviles)
+
+## 👥 Posibles Usuarios
 
 - **Administradores:** responsables de gestionar y supervisar las comisiones, viajes, y finanzas de la empresa.
-- **Choferes:** encargados de realizar las comisiones y consultar sus asignaciones desde el sistema.
-
----
-
+- **Usuarios:** encargados de realizar las comisiones y consultar sus asignaciones desde el sistema.
+  
 ## 👥 Integrantes del Equipo
 - Lanfranco Darel Caballero | Programador
-- Tomás Agustín Huespe
+- Tomás Agustín Huespe | Soporte
 - Milton René Argüello | Enfocado en Backend, principalmente .NET, y conocimientos en HTML, CSS y React. |
 - Gonzalo Nicolás Quiroga | Enfocado en frontend y experiencia en HTML, CSS y React. |
-- Ángel Nicolás Rivero
-
----
+- Ángel Nicolás Rivero | Soporte / Auxiliar técnico
 
 ## 🚀 Estado del Proyecto
 
-🟡 Proyecto en etapa inicial de ideación, planificación y asignación de roles.
-
----
+🟡 El proyecto se encuentra en la etapa de desarrollo, véase la rama `develop` para ver los cambios 
 
 ## 📅 Materia
 
-Este proyecto fue desarrollado como parte de la materia **Proyecto Integrador I** de la carrera **Tecnicatura Superior en Desarrollo Web y Aplicaciones Digitales**.
+Este proyecto fue desarrollado como parte de la materia **Iniciación a la programación y base de datos** de la carrera **Tecnicatura Superior en Desarrollo Web y Aplicaciones Digitales**.
 
----
