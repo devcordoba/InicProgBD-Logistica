@@ -53,46 +53,12 @@ El modelo fue normalizado hasta **Tercera Forma Normal (3FN)** para evitar redun
 - Se eliminaron dependencias parciales (2FN).
 - Se eliminaron dependencias transitivas, separando responsabilidades conceptuales en distintas tablas (3FN).
 
-## Diagrama Modelo Entidad Relación
-
-![Diagrama Modelo Relacional](diagrams/DiagramaModeloRelacional.drawio.svg)
-
 ## Modelo Relacional
 
-```sql
-CREATE TABLE Roles (
-    id_rol INT PRIMARY KEY AUTO_INCREMENT,
-    nombre VARCHAR(50) UNIQUE NOT NULL
-);
+![Diagrama Modelo Relacional](diagrams/Diagrama-relacional.png)
 
-CREATE TABLE Usuarios (
-    id_usuario INT PRIMARY KEY AUTO_INCREMENT,
-    nombre VARCHAR(100) NOT NULL,
-    email VARCHAR(100) UNIQUE NOT NULL,
-    contrasena CHAR(64) NOT NULL,
-    id_rol INT NOT NULL,
-    FOREIGN KEY (id_rol) REFERENCES Roles(id_rol)
-);
 
-CREATE TABLE Pedidos (
-    id_pedido INT PRIMARY KEY AUTO_INCREMENT,
-    id_usuario INT NOT NULL,
-    fecha TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    estado ENUM('Pendiente', 'Despachado') DEFAULT 'Pendiente',
-    descripcion TEXT,
-    FOREIGN KEY (id_usuario) REFERENCES Usuarios(id_usuario)
-);
-
-CREATE TABLE Movimientos (
-    id_movimiento INT PRIMARY KEY AUTO_INCREMENT,
-    id_pedido INT NOT NULL,
-    tipo ENUM('Ingreso', 'Despacho') NOT NULL,
-    fecha TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    FOREIGN KEY (id_pedido) REFERENCES Pedidos(id_pedido)
-);
-```
-
-## Diagrama Entidad Relacion
+## Diagrama ER (Entidad Relacion)
 
 ![Diagrama Entidad-Relación](diagrams/DiagramaER.drawio.svg)
 
@@ -102,6 +68,12 @@ CREATE TABLE Movimientos (
 - **Contraseñas hasheadas**: se aplica SHA-256 antes del almacenamiento.
 - **Estados y tipos controlados con ENUM**: garantiza integridad en campos críticos.
 - **Movimientos sin ID de usuario**: no se incluye, ya que no se requería en la lógica original; puede agregarse si se desea mayor trazabilidad.
+
+## Diagrama de clases
+
+
+![Diagrama de clases](diagrams/diagrama-clases.svg)
+
 
 ## CRUD de Usuario en SQL
 
