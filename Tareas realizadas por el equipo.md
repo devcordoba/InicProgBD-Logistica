@@ -18,7 +18,7 @@ Este integrando se encargo de la creación de una clase Menu, para ser usada dur
 
 ### Milton Arguello
 
-Se dedico a generar los modelos utilizados en el programa como el modelo usuarios y pedidos, eso quiere decir a creación de una clase con las funcionalidades relativas a los pedidos que hacen los usuarios y a las diversas funcionales de los usuarios como distinguir roles, funciones de usuario y administrativas o la edición del perfil. Además documento la base de datos como lo es el modelo ER y el modelo de relación, también genero el script SQL que usamos como modelo en nuestro programa.
+Se dedico a generar los modelos utilizados en el programa como el modelo usuarios y comisiones, eso quiere decir a creación de una clase con las funcionalidades relativas a las comisiones que hacen los usuarios y a las diversas funcionales de los usuarios como distinguir roles, funciones de usuario y administrativas o la edición del perfil. Además documento la base de datos como lo es el modelo ER y el modelo de relación, también genero el script SQL que usamos como modelo en nuestro programa.
 
 ### Ángel Nicolás Rivero
 
