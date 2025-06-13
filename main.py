@@ -1,6 +1,6 @@
 from models.login import Login
 from menu.menu import Menu
-from models.pedidos import Pedidos
+from models.comision import Comision
 from models.usuario import Usuario
 from utils.utils import validar_contrasena
 
@@ -11,7 +11,7 @@ if len(Usuario._usuarios) == 0:
 def main():
     while True:
         login = Login()
-        print("\n=== Sistema de gestión de pedidos (LogistiCom) ===")
+        print("\n=== Sistema de gestión de comisiones (LogistiCom) ===")
         print("\n=== Iniciar sesión ===\n")
         email = input("Email: ").strip()
         password = input("Contraseña: ").strip()
@@ -25,15 +25,15 @@ def main():
                     print("\nSaliendo del sistema ...")
                     break
                 elif opcion == '1':
-                    desc = input("\nDescripción del pedido: ").strip()
-                    if Pedidos.ingresar_pedido(login.usuario_actual.id_usuario, desc):
-                        print("\nPedido ingresado.")
+                    desc = input("\nDescripción de la comisión: ").strip()
+                    if Comision.ingresar_comision(login.usuario_actual.id_usuario, desc):
+                        print("\nComisión ingresada.")
                     else:
                         print("Error.")
                 elif opcion == '2':
-                    pedidos = Pedidos.listar_pedidos_usuario(login.usuario_actual.id_usuario)
-                    for p in pedidos:
-                        print(f"\nID: {p['id_pedido']}, Usuario: {p['nombre']}, Fecha: {p['fecha']}, Estado: {p['estado']}, Descripción: {p['descripcion']}")
+                    comision = Comision.listar_comisiones_usuario(login.usuario_actual.id_usuario)
+                    for p in comision:
+                        print(f"\nID: {p['id_comision']}, Usuario: {p['nombre']}, Fecha: {p['fecha']}, Estado: {p['estado']}, Descripción: {p['descripcion']}")
                 elif opcion == '3':
                     nuevo = input("\nNuevo nombre: ").strip()
                     if login.cambiar_nombre(nuevo):
@@ -63,13 +63,13 @@ def main():
                 elif opcion == '5' and login.usuario_actual.rol == 'admin':
                     menu.registrar_usuario_admin()
                 elif opcion == '6' and login.usuario_actual.rol == 'admin':
-                    todos = Pedidos.listar_pedidos_todos()
+                    todos = Comision.listar_comisiones_todos()
                     for p in todos:
-                        print(f"\nID: {p['id_pedido']}, Usuario: {p['nombre']}, Fecha: {p['fecha']}, Estado: {p['estado']}, Descripción: {p['descripcion']}")
+                        print(f"\nID: {p['id_comision']}, Usuario: {p['nombre']}, Fecha: {p['fecha']}, Estado: {p['estado']}, Descripción: {p['descripcion']}")
                 elif opcion == '7' and login.usuario_actual.rol == 'admin':
                     try:
-                        idp = int(input("\nID del pedido a despachar: "))
-                        if Pedidos.despachar_pedido(idp):
+                        idp = int(input("\nID de la comision a despachar: "))
+                        if Comision.despachar_comision(idp):
                             print("\nDespachado correctamente.")
                         else:
                             print("Error.\n")

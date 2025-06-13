@@ -1,6 +1,6 @@
 from models.usuario import Usuario
 from models.login import Login
-from models.pedidos import Pedidos
+from models.comision import Comision
 from utils.utils import validar_contrasena
 
 class Menu:
@@ -72,15 +72,15 @@ class Menu:
     def ver_menu(self):
         usuario = self.login.usuario_actual
         print(f"\nBienvenido/a, {usuario.nombre} ({usuario.rol})\n")
-        print("1. Ingresar pedido")
-        print("2. Ver mis pedidos")
+        print("1. Ingresar comision")
+        print("2. Ver mis comisiones")
         print("3. Cambiar nombre")
         print("4. Cambiar contraseña")
         if usuario.rol == 'admin':
             print("\n====== Menu administrativo ======\n")
             print("5. Registrar nuevo usuario")
-            print("6. Ver todos los pedidos")
-            print("7. Despachar pedido")
+            print("6. Ver todos las comisiones")
+            print("7. Despachar comisión")
             print("8. Ver todos los usuarios")
             print("9. Cambiar rol de usuario")
             print("10. Eliminar usuario")
