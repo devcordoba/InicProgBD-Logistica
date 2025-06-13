@@ -56,9 +56,9 @@ El modelo fue normalizado hasta **Tercera Forma Normal (3FN)** para evitar redun
 ![Diagrama Modelo Relacional](diagrams/Diagrama-relacional.png)
 
 
-## Diagrama ER (Entidad Relacion)
+## Diagrama DER
 
-![Diagrama Entidad-Relación](diagrams/ER.png)
+![Diagrama Entidad-Relación](diagrams/DiagramaEntidadRelacion.drawio.jpeg)
 
 ## Consideraciones de Diseño
 
